@@ -1,26 +1,39 @@
-import logo from './logo.svg';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import './App.css';
+import YourLists from './Screens/YourLists'; // Import YourLists component
+import YourFavourites from './Screens/YourFavourites'; // Import YourFavourites component
+import YourProfile from './Screens/YourProfile'; // Import YourProfile component
+
+function HomePage() {
+  return (
+    <div>
+      <h2>Welcome to My Application</h2>
+      <p>Select an option below:</p>
+    </div>
+  );
+}
 
 function App() {
-  const handleClick = () => {
-    console.log("Hello World");
-  };
-
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <button className="custom-button" onClick={handleClick}>Click Me</button>
-        <iframe
-          width="560"
-          height="315"
-          src="https://www.youtube.com/embed/dQw4w9WgXcQ"
-          title="YouTube video player"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
-        ></iframe>
-      </header>
-    </div>
+    <Router>
+      <div className="App">
+        <header className="App-header">
+          <h1>My Application</h1>
+          <nav>
+            <Link to="/">Home</Link> | <Link to="/favourites">Favourites</Link> | <Link to="/lists">Lists</Link> | <Link to="/profile">Profile</Link>
+          </nav>
+        </header>
+        <main>
+          <Routes>
+            <Route path="/" element={<HomePage />} /> {/* Set HomePage as the welcome page */}
+            <Route path="/favourites" element={<YourFavourites />} />
+            <Route path="/lists" element={<YourLists />} />
+            <Route path="/profile" element={<YourProfile />} />
+          </Routes>
+        </main>
+      </div>
+    </Router>
   );
 }
 
