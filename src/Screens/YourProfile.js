@@ -19,29 +19,7 @@ function YourProfile() {
 
   return (
     <div className="YourProfile">
-      <h2>Your Lists</h2>
-      <p>Manage your items below:</p>
-      <ul>
-        {items.map((item, index) => (
-          <li key={index}>
-            {item}{' '}
-            <button onClick={() => removeItem(index)} style={{ marginLeft: '10px' }}>
-              Remove
-            </button>
-          </li>
-        ))}
-      </ul>
-      <div style={{ marginTop: '20px' }}>
-        <input
-          type="text"
-          value={newItem}
-          onChange={(e) => setNewItem(e.target.value)}
-          placeholder="Add a new item"
-        />
-        <button onClick={addItem} style={{ marginLeft: '10px' }}>
-          Add Item
-        </button>
-      </div>
+      <h2>Your Profile</h2>
     </div>
   );
 }
