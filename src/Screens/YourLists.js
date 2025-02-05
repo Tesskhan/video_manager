@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate for navigation
 import { auth, db } from '../firebaseConfig'; // Importing Firebase services
 import { getDocs, collection, addDoc, deleteDoc, doc } from 'firebase/firestore';
 import { onAuthStateChanged } from 'firebase/auth'; // To track the authentication state
@@ -11,6 +12,7 @@ function YourLists() {
   const [newListTitle, setNewListTitle] = useState('');
   const [newListDescription, setNewListDescription] = useState('');
   const [deleteMode, setDeleteMode] = useState(false);
+  const navigate = useNavigate(); // Initialize useNavigate
 
   useEffect(() => {
     // Check if the user is logged in
@@ -76,23 +78,31 @@ function YourLists() {
     }
   };
 
+  // Handle navigating to the ListVideos page
+  const handleNavigateToListVideos = (listId) => {
+    navigate(`/list-videos/${listId}`);
+  };
+
   return (
     <div className="YourLists">
       <h2>Your Lists</h2>
-      <div className="list-actions">
+
+      {/* Management Card (Fixed to the Right) */}
+      <div className="management-card">
+        <h3>Manage Lists</h3>
         <div className="create-list-form">
           <input
             type="text"
             placeholder="List Title"
             value={newListTitle}
             onChange={(e) => setNewListTitle(e.target.value)}
-            className="list-input"
+            className="input"
           />
           <textarea
             placeholder="List Description"
             value={newListDescription}
             onChange={(e) => setNewListDescription(e.target.value)}
-            className="list-input"
+            className="input"
           />
           <button onClick={handleCreateList} className="create-list-btn">Create List</button>
         </div>
@@ -100,17 +110,18 @@ function YourLists() {
           {deleteMode ? 'Cancel' : 'Remove List'}
         </button>
       </div>
+
       {loading ? (
         <p>Loading...</p>
       ) : (
         <div className="list-container">
           {lists.length > 0 ? (
             lists.map((list) => (
-              <div className="card" key={list.id}>
+              <div className="card" key={list.id} onClick={() => handleNavigateToListVideos(list.id)}>
                 <h3>{list.title}</h3>
                 <p>{list.description}</p>
                 {deleteMode && (
-                  <button onClick={() => handleDeleteList(list.id)} className="delete-list-btn">X</button>
+                  <button onClick={(e) => { e.stopPropagation(); handleDeleteList(list.id); }} className="delete-list-btn">X</button>
                 )}
               </div>
             ))

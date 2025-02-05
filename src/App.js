@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, NavLink, useNavigate } from 're
 import './App.css';
 import logo from './logo.svg';
 import YourLists from './Screens/YourLists';
+import ListVideos from './Screens/ListVideos';
 import YourFavourites from './Screens/YourFavourites';
 import YourProfile from './Screens/YourProfile';
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from 'firebase/auth';
@@ -183,6 +184,7 @@ function App() {
             <Route path="/" element={<HomePage isAuthenticated={isAuthenticated} setIsAuthenticated={setIsAuthenticated} />} />
             <Route path="/favourites" element={<YourFavourites />} />
             <Route path="/lists" element={<YourLists />} />
+            <Route path="/list-videos/:listId" element={<ListVideos />} />
             <Route path="/profile" element={<Profile setIsAuthenticated={setIsAuthenticated} />} />
           </Routes>
         </main>

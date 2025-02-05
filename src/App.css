@@ -3,6 +3,7 @@ body {
   margin: 0;
   background-color: #333; /* Dark background */
   color: #f0f0f0; /* Light gray text */
+  font-family: Arial, sans-serif; /* Ensure consistent font */
 }
 
 /* Header Styles */
@@ -41,6 +42,7 @@ body {
   cursor: pointer;
   text-decoration: none; /* Remove underline if it's a link */
   transition: color 0.3s ease;
+  font-family: Arial, sans-serif; /* Ensure consistent font */
 }
 
 .nav-button:hover,
@@ -60,6 +62,7 @@ body {
   min-height: 100vh; /* Ensure the entire page is covered */
   display: flex;
   flex-direction: column;
+  font-family: Arial, sans-serif; /* Ensure consistent font */
 }
 
 .App-logo {
@@ -83,40 +86,6 @@ body {
   }
 }
 
-/* Styling for the Create List button */
-.create-list-btn {
-  background-color: #4CAF50;
-  color: white;
-  padding: 12px 24px;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  margin-top: 10px;
-  font-size: 1.1em;
-}
-
-.create-list-btn:hover {
-  background-color: #45a049;
-}
-
-/* Styling for the Delete button */
-.delete-list-btn {
-  background-color: #f44336;
-  color: white;
-  padding: 8px 16px;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  font-size: 1.1em;
-}
-
-.delete-list-btn:hover {
-  background-color: #e60000;
-}
-
 /* Styling for the list creation form */
 .create-list-form {
   display: flex;
@@ -130,9 +99,14 @@ body {
   padding: 12px;
   border: 1px solid #ddd;
   border-radius: 8px;
+  min-width: max-content;
+  max-width: 300px;
   width: 100%;
-  font-size: 1.1em;
-  font-weight: 500;
+  max-height: max-content;
+  font-size: 1.1rem;
+  font-weight: 400; /* Corrected font-weight */
+  font-family: Arial, sans-serif; /* Ensure consistent font */
+  box-sizing: border-box; 
 }
 
 .create-list-form input:focus,
@@ -144,19 +118,59 @@ body {
 .Favorites {
   margin: 20px;
   padding: 20px;
+  font-family: Arial, sans-serif; /* Ensure consistent font */
 }
 
 h2 {
   text-align: center;
   font-size: 2.2em;
   margin-bottom: 20px;
+  font-family: Arial, sans-serif; /* Ensure consistent font */
 }
 
 .list-container {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column; /* Ensure lists are vertical */
   justify-content: center;
   gap: 24px;
+}
+
+.management-card {
+  position: fixed;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+  width: 300px; /* Adjust width as needed */
+  background-color: #222; /* Slightly lighter than body */
+  color: #f0f0f0;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1000; /* Ensure it stays above other elements */
+  font-family: Arial, sans-serif; /* Ensure consistent font */
+}
+
+.management-card h3 {
+  margin-top: 0;
+  font-size: 1.5em;
+  color: #fff;
+}
+
+.management-card button {
+  width: 100%;
+  background-color: #007BFF;
+  border: none;
+  color: white;
+  padding: 12px 16px;
+  margin-top: 10px;
+  font-size: 1.1em;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+}
+
+.management-card button:hover {
+  background-color: #0056b3;
 }
 
 .card { 
@@ -172,6 +186,7 @@ h2 {
   flex-direction: column;
   justify-content: space-between;
   position: relative;
+  font-family: Arial, sans-serif; /* Ensure consistent font */
 }
 
 .card:hover {
@@ -184,17 +199,19 @@ h2 {
   color: #555;
   margin: 0;
   line-height: 1.6;
+  font-family: Arial, sans-serif; /* Ensure consistent font */
 }
 
 .Favorites p { /* Loading state styling */
   text-align: center;
   font-size: 1.3em;
   color: #888;
+  font-family: Arial, sans-serif; /* Ensure consistent font */
 }
 
 .list-container { /* Centering list container */
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column; /* Ensure lists are vertical */
   justify-content: center;
   gap: 24px;
 }
@@ -206,6 +223,66 @@ h2 {
   align-items: center;
 }
 
+/* Video List Styles */
+.video-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+}
+
+.card {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  color: #333;
+  border-radius: 12px;
+  padding: 24px;
+  width: 280px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.card h3 {
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+.card iframe {
+  width: 100%;
+  height: 160px;
+  border-radius: 8px;
+  margin-top: 10px;
+}
+
+.card button {
+  background-color: #ff4d4d;
+  border: none;
+  color: white;
+  padding: 10px 14px;
+  font-size: 0.9em;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+}
+
+.card button:hover {
+  background-color: #e60000;
+}
+
+
 /* HomePage Layout */
 .HomePage {
   display: flex;
@@ -213,6 +290,7 @@ h2 {
   justify-content: center;
   min-height: 80vh; /* Center content vertically */
   background-color: #333; /* Dark background */
+  font-family: Arial, sans-serif; /* Ensure consistent font */
 }
 
 .HomePage-logo {
@@ -234,20 +312,24 @@ h2 {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  font-family: Arial, sans-serif; /* Ensure consistent font */
 }
 
 .HomePage-form h2 {
   margin-bottom: 24px;
+  font-family: Arial, sans-serif; /* Ensure consistent font */
 }
 
 .form-group {
   margin-bottom: 18px;
   width: 100%;
+  font-family: Arial, sans-serif; /* Ensure consistent font */
 }
 
 .form-group label {
   display: block;
   margin-bottom: 6px;
+  font-family: Arial, sans-serif; /* Ensure consistent font */
 }
 
 .form-group input {
@@ -255,6 +337,7 @@ h2 {
   padding: 12px;
   border: 1px solid #ccc;
   border-radius: 8px;
+  font-family: Arial, sans-serif; /* Ensure consistent font */
 }
 
 .custom-button {
@@ -271,6 +354,7 @@ h2 {
   cursor: pointer;
   border-radius: 8px;
   transition: background-color 0.3s ease;
+  font-family: Arial, sans-serif; /* Ensure consistent font */
 }
 
 .custom-button:hover {
@@ -285,6 +369,7 @@ h2 {
   text-decoration: underline;
   font-size: 1.1em;
   padding: 0;
+  font-family: Arial, sans-serif; /* Ensure consistent font */
 }
 
 .link-button:hover {
@@ -294,11 +379,13 @@ h2 {
 .error {
   color: red;
   margin-bottom: 18px;
+  font-family: Arial, sans-serif; /* Ensure consistent font */
 }
 
 .success {
   color: green;
   margin-bottom: 18px;
+  font-family: Arial, sans-serif; /* Ensure consistent font */
 }
 
 /* YourLists and YourFavourites Layout */
@@ -308,18 +395,21 @@ h2 {
   display: flex;
   flex-direction: column;
   align-items: center; /* Center the content vertically */
+  font-family: Arial, sans-serif; /* Ensure consistent font */
 }
 
 .YourLists h2, .YourFavourites h2 {
   font-size: 2.2em;
   margin-bottom: 24px;
+  font-family: Arial, sans-serif; /* Ensure consistent font */
 }
 
 .list-container, .fav-list {
   display: flex;
-  flex-wrap: wrap; /* Ensure cards are centered */
+  flex-direction: column; /* Ensure lists are vertical */
   justify-content: center; /* Center the cards */
   gap: 24px; /* Spacing between cards */
+  font-family: Arial, sans-serif; /* Ensure consistent font */
 }
 
 .card, .fav-card {
@@ -328,6 +418,7 @@ h2 {
   border-radius: 12px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   position: relative;
+  font-family: Arial, sans-serif; /* Ensure consistent font */
 }
 
 .card h3, .fav-card h3 {
@@ -335,27 +426,13 @@ h2 {
   color: #555;
   margin: 0;
   line-height: 1.6;
+  font-family: Arial, sans-serif; /* Ensure consistent font */
 }
 
 .card p, .fav-card p {
   font-size: 1.1em;
   color: #555;
-}
-
-/* Styling for the toggle delete mode button */
-.toggle-delete-mode-btn {
-  background-color: #f44336;
-  color: white;
-  padding: 12px 24px;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  margin-top: 10px;
-  font-size: 1.1em;
-}
-
-.toggle-delete-mode-btn:hover {
-  background-color: #e60000;
+  font-family: Arial, sans-serif; /* Ensure consistent font */
 }
 
 /* Styling for the list actions container */
@@ -369,11 +446,13 @@ h2 {
   right: 20px;
   transform: translateY(-50%);
   margin-right: 20px;
+  font-family: Arial, sans-serif; /* Ensure consistent font */
 }
 
 /* Profile Layout */
 .Profile {
   padding: 24px;
+  font-family: Arial, sans-serif; /* Ensure consistent font */
 }
 
 .Profile button {
@@ -385,6 +464,7 @@ h2 {
   border-radius: 8px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  font-family: Arial, sans-serif; /* Ensure consistent font */
 }
 
 .Profile button:hover {
