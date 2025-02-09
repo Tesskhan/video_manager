@@ -120,9 +120,11 @@ function Favorites() {
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
                 ></iframe>
-                <button onClick={() => toggleFavorite(video.id, video.listId, video.liked)}>
-                  {video.liked ? '★' : '☆'}
-                </button>
+                <div class="card-buttons">
+                  <button onClick={() => toggleFavorite(video.id, video.listId, video.liked)} className="favorite-btn">
+                    {video.liked ? '★' : '☆'}
+                  </button>
+                </div>
               </div>
             ))
           ) : (
