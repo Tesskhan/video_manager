@@ -540,17 +540,51 @@ h2 {
   background-color: #333; /* Darker gray on hover */
 }
 
-/* Responsive Styles */
+/* Responsive Styles for smaller screens */
 @media (max-width: 768px) {
+  /* App Header */
   .App-header {
     font-size: calc(8px + 2vmin);
+    padding: 10px 0;
   }
 
   .App-nav ul {
     flex-direction: column;
     gap: 10px;
+    justify-content: center;
   }
 
+  .App-nav li {
+    display: block;
+  }
+
+  /* App Layout */
+  .App {
+    padding: 0 15px;
+  }
+
+  .App-logo {
+    height: 30vmin; /* Adjust logo size */
+  }
+
+  /* Create List Form */
+  .create-list-form {
+    width: 100%;
+    padding: 0 20px;
+  }
+
+  .create-list-form input,
+  .create-list-form textarea {
+    width: 100%;
+    font-size: 1rem;
+  }
+
+  .create-list-btn,
+  .toggle-delete-mode-btn {
+    font-size: 1rem;
+  }
+
+  /* Management Card */
   .management-card {
     position: static;
     transform: none;
@@ -558,17 +592,103 @@ h2 {
     margin-top: 20px;
   }
 
+  /* Card */
   .card {
     width: 100%;
+    padding: 16px;
+    font-size: 0.9rem;
   }
 
+  .card h3, .card p {
+    font-size: 1em;
+  }
+
+  /* Favorites Section */
+  .Favorites {
+    padding: 20px;
+  }
+
+  .list-container {
+    gap: 16px;
+  }
+
+  /* Video Container */
   .video-container {
     flex-direction: column;
     align-items: center;
   }
 
+  .card iframe {
+    height: 140px;
+  }
+
+  .card-buttons {
+    flex-direction: column; /* Stack buttons vertically */
+    gap: 10px;
+  }
+
+  /* HomePage Layout */
+  .HomePage {
+    flex-direction: column;
+    padding: 20px;
+  }
+
   .HomePage-form {
-    width: 90%;
+    width: 100%;
     margin: 20px;
+    padding: 16px;
+  }
+
+  .HomePage-logo {
+    flex: none;
+    margin-bottom: 20px;
+  }
+
+  .form-group input {
+    width: 100%;
+  }
+
+  /* Profile Section */
+  .Profile {
+    padding: 20px;
+  }
+
+  /* YourLists and YourFavourites */
+  .YourLists, .YourFavourites {
+    padding: 16px;
+  }
+
+  .list-container, .fav-list {
+    gap: 16px;
+  }
+
+  .card, .fav-card {
+    width: 100%;
+    padding: 16px;
+  }
+
+  .card h3, .fav-card h3 {
+    font-size: 1em;
+  }
+
+  .card p, .fav-card p {
+    font-size: 1rem;
+  }
+
+  /* Buttons */
+  .custom-button, .delete-list-btn {
+    font-size: 1rem;
+  }
+
+  .link-button {
+    font-size: 1.1em;
+  }
+
+  /* List Actions */
+  .list-actions {
+    position: static;
+    margin-top: 20px;
+    align-items: center;
   }
 }
+
