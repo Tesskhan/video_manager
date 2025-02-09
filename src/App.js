@@ -5,7 +5,6 @@ import logo from './logo.svg';
 import YourLists from './Screens/YourLists';
 import ListVideos from './Screens/ListVideos';
 import YourFavourites from './Screens/YourFavourites';
-import YourProfile from './Screens/YourProfile';
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from 'firebase/auth';
 import './firebaseConfig'; // Ensure you have initialized Firebase in this file
 
