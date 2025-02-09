@@ -580,9 +580,8 @@ h2 {
 
   .create-list-form input,
   .create-list-form textarea {
-    width: 100%;
+    width: 90%;
     font-size: 1rem;
-    max-width: 100%; /* Ensure input doesn't overflow */
     margin-bottom: 12px; /* Space between form elements */
   }
 
@@ -597,8 +596,10 @@ h2 {
   .management-card {
     position: static;
     transform: none;
-    width: 100%;
+    align-items: center;
+    width: 80%;
     margin-top: 20px;
+    margin-bottom: 20px;
     padding: 16px;
   }
 
@@ -623,6 +624,7 @@ h2 {
 
   .list-container {
     gap: 16px;
+    width: 90%;
     justify-content: center; /* Ensure the lists are centered */
   }
 
