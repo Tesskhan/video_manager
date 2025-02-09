@@ -91,9 +91,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: 12px;
-  width: 100%; /* Ensure it takes full width */
-  max-width: 400px; /* Set a max width for better alignment */
-  margin: 0 auto; /* Center the form horizontally */
+  width: 320px;
 }
 
 .create-list-form input,
@@ -101,7 +99,10 @@ body {
   padding: 12px;
   border: 1px solid #ddd;
   border-radius: 8px;
-  width: 100%; /* Ensure it takes full width */
+  min-width: max-content;
+  max-width: 300px;
+  width: 100%;
+  max-height: max-content;
   font-size: 1.1rem;
   font-weight: 400; /* Corrected font-weight */
   font-family: Arial, sans-serif; /* Ensure consistent font */
@@ -116,7 +117,7 @@ body {
 /* Styling for the buttons in the form */
 .create-list-btn,
 .toggle-delete-mode-btn {
-  width: 100%; /* Ensure it takes full width */
+  width: 100%;
   background-color: #007BFF;
   border: none;
   color: white;
@@ -131,60 +132,6 @@ body {
 .create-list-btn:hover,
 .toggle-delete-mode-btn:hover {
   background-color: #0056b3;
-}
-
-@media (max-width: 768px) {
-  /* HomePage Layout Adjustments */
-  .HomePage {
-    flex-direction: column;
-    min-height: auto;
-    padding: 20px;
-    position: relative; /* Ensure the form can be positioned absolutely */
-  }
-
-  .HomePage-logo {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 20px; /* Add space between logo and form */
-  }
-
-  .HomePage-form {
-    position: absolute; /* Position the form over the logo */
-    top: 50%; /* Center vertically */
-    left: 50%; /* Center horizontally */
-    transform: translate(-50%, -50%); /* Perfect centering */
-    width: 90%; /* Make the form take up most of the screen */
-    max-width: none; /* Remove max-width restriction */
-    background-color: rgba(255, 255, 255, 0.95); /* Semi-transparent white */
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    z-index: 10; /* Ensure it's above the logo */
-  }
-
-  /* Adjust form elements for better readability */
-  .HomePage-form h2 {
-    font-size: 1.8em; /* Smaller heading */
-    margin-bottom: 16px;
-  }
-
-  .form-group input {
-    padding: 10px; /* Smaller padding */
-    font-size: 1rem; /* Smaller font size */
-  }
-
-  .custom-button {
-    padding: 10px 14px; /* Smaller button */
-    font-size: 1em;
-  }
-
-  /* Ensure the header doesn't overlap with the form */
-  .App-header {
-    position: relative;
-    z-index: 20; /* Ensure the header is above the form */
-  }
 }
 
 /* General page styling */
@@ -252,8 +199,7 @@ h2 {
   color:#333;
   border-radius: 12px;
   padding: 24px;
-  width: 100%; /* Ensure it takes full width */
-  max-width: 280px; /* Set a max width for better alignment */
+  width: 280px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   display: flex;
@@ -312,8 +258,7 @@ h2 {
   color: #333;
   border-radius: 12px;
   padding: 24px;
-  width: 100%; /* Ensure it takes full width */
-  max-width: 280px; /* Set a max width for better alignment */
+  width: 280px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   display: flex;
@@ -424,14 +369,13 @@ h2 {
 }
 
 .HomePage-form {
-  flex: 0 0 90%; /* Take up 90% of the horizontal screen on small screens */
-  max-width: 400px; /* Set a max width for better alignment */
+  flex: 0 0 25%; /* Take up 25% of the horizontal screen */
   background-color: #fff; /* White background for form */
   padding: 24px;
   border-radius: 12px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   color: #333; /* Dark text */
-  margin: 20px; /* Center the form horizontally */
+  margin: 50px; /* Center the form horizontally */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -544,8 +488,6 @@ h2 {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   position: relative;
   font-family: Arial, sans-serif; /* Ensure consistent font */
-  width: 100%; /* Ensure it takes full width */
-  max-width: 280px; /* Set a max width for better alignment */
 }
 
 .card h3, .fav-card h3 {
@@ -560,26 +502,6 @@ h2 {
   font-size: 1.1em;
   color: #555;
   font-family: Arial, sans-serif; /* Ensure consistent font */
-}
-
-@media (max-width: 768px) {
-  .card,
-  .fav-card {
-    width: 100%;
-    max-width: none;
-    padding: 15px;
-  }
-
-  .card-buttons {
-    flex-direction: column;
-    gap: 5px;
-  }
-
-  .favorite-btn,
-  .delete-list-btn {
-    width: 100%;
-    margin-top: 5px;
-  }
 }
 
 /* Styling for the list actions container */
@@ -622,7 +544,6 @@ h2 {
 @media (max-width: 768px) {
   .App-header {
     font-size: calc(8px + 2vmin);
-    padding: 5px 0;
   }
 
   .App-nav ul {
@@ -630,31 +551,11 @@ h2 {
     gap: 10px;
   }
 
-  .nav-button {
-    font-size: 16px;
-  }
-}
-
   .management-card {
     position: static;
     transform: none;
     width: 100%;
     margin-top: 20px;
-  }
-
-  @media (max-width: 768px) {
-    .management-card {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      top: auto;
-      transform: none;
-      width: 100%;
-      border-radius: 0;
-      margin-top: 0;
-      padding: 15px;
-    }
   }
 
   .card {
@@ -670,15 +571,4 @@ h2 {
     width: 90%;
     margin: 20px;
   }
-
-  @media (max-width: 768px) {
-    .video-container {
-      flex-direction: column;
-      align-items: center;
-    }
-  
-    .card iframe {
-      height: 120px;
-    }
-  }
-
+}
