@@ -164,12 +164,14 @@ function ListVideos() {
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
                 ></iframe>
-                <button onClick={() => toggleFavorite(video.id, video.liked)}>
-                  {video.liked ? '★' : '☆'}
-                </button>
-                {deleteMode && (
-                  <button onClick={() => handleDeleteVideo(video.id)}>X</button>
-                )}
+                <div class="card-buttons">
+                  <button onClick={() => toggleFavorite(video.id, video.liked)} class="favorite-btn">
+                    {video.liked ? '★' : '☆'}
+                  </button>
+                  {deleteMode && (
+                    <button onClick={() => handleDeleteVideo(video.id)} className="delete-list-btn">X</button>
+                  )}
+                </div>
               </div>
             ))
           ) : (
