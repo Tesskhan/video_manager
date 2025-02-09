@@ -141,8 +141,8 @@ function ListVideos() {
             onChange={(e) => setNewVideoUrl(e.target.value)}
           />
         </div>
-        <button onClick={handleAddVideo}>Add Video</button>
-        <button onClick={() => setDeleteMode(!deleteMode)}>
+        <button onClick={handleAddVideo} className='create-list-btn'>Add Video</button>
+        <button onClick={() => setDeleteMode(!deleteMode)} className='create-list-btn'>
           {deleteMode ? 'Cancel' : 'Remove Video'}
         </button>
       </div>
@@ -150,7 +150,7 @@ function ListVideos() {
       {loading ? (
         <p>Loading...</p>
       ) : (
-        <div className="list-container">
+        <div className="video-container">
           {videos.length > 0 ? (
             videos.map((video) => (
               <div className="card" key={video.id}>
