@@ -552,6 +552,7 @@ h2 {
     flex-direction: column;
     gap: 10px;
     justify-content: center;
+    text-align: center;
   }
 
   .App-nav li {
@@ -561,6 +562,7 @@ h2 {
   /* App Layout */
   .App {
     padding: 0 15px;
+    text-align: center; /* Center everything inside App */
   }
 
   .App-logo {
@@ -571,17 +573,24 @@ h2 {
   .create-list-form {
     width: 100%;
     padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center the form content */
   }
 
   .create-list-form input,
   .create-list-form textarea {
     width: 100%;
     font-size: 1rem;
+    max-width: 100%; /* Ensure input doesn't overflow */
+    margin-bottom: 12px; /* Space between form elements */
   }
 
   .create-list-btn,
   .toggle-delete-mode-btn {
+    width: 100%;
     font-size: 1rem;
+    margin-top: 10px; /* Space between the button and inputs */
   }
 
   /* Management Card */
@@ -590,6 +599,7 @@ h2 {
     transform: none;
     width: 100%;
     margin-top: 20px;
+    padding: 16px;
   }
 
   /* Card */
@@ -597,19 +607,23 @@ h2 {
     width: 100%;
     padding: 16px;
     font-size: 0.9rem;
+    box-sizing: border-box; /* Ensure content doesn't overflow */
   }
 
   .card h3, .card p {
     font-size: 1em;
+    text-align: left; /* Ensure text aligns well */
   }
 
   /* Favorites Section */
   .Favorites {
     padding: 20px;
+    text-align: center;
   }
 
   .list-container {
     gap: 16px;
+    justify-content: center; /* Ensure the lists are centered */
   }
 
   /* Video Container */
@@ -625,18 +639,23 @@ h2 {
   .card-buttons {
     flex-direction: column; /* Stack buttons vertically */
     gap: 10px;
+    align-items: center;
   }
 
   /* HomePage Layout */
   .HomePage {
     flex-direction: column;
     padding: 20px;
+    align-items: center; /* Center all content */
   }
 
   .HomePage-form {
     width: 100%;
     margin: 20px;
     padding: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
   .HomePage-logo {
@@ -651,20 +670,24 @@ h2 {
   /* Profile Section */
   .Profile {
     padding: 20px;
+    text-align: center; /* Center content */
   }
 
   /* YourLists and YourFavourites */
   .YourLists, .YourFavourites {
     padding: 16px;
+    text-align: center;
   }
 
   .list-container, .fav-list {
     gap: 16px;
+    justify-content: center;
   }
 
   .card, .fav-card {
     width: 100%;
     padding: 16px;
+    box-sizing: border-box; /* Prevent overflow */
   }
 
   .card h3, .fav-card h3 {
@@ -677,7 +700,9 @@ h2 {
 
   /* Buttons */
   .custom-button, .delete-list-btn {
+    width: 100%;
     font-size: 1rem;
+    margin-top: 10px;
   }
 
   .link-button {
@@ -691,4 +716,3 @@ h2 {
     align-items: center;
   }
 }
-
