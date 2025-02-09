@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { auth, db } from '../firebaseConfig'; // Importing Firebase services
-import { getDocs, collection, doc, getDoc } from 'firebase/firestore';
+import { getDocs, collection, doc, getDoc, updateDoc } from 'firebase/firestore';
 import { onAuthStateChanged } from 'firebase/auth'; // To track the authentication state
 import '../App.css'; // Assuming you've created your CSS
 
@@ -24,12 +24,11 @@ function Favorites() {
 
   useEffect(() => {
     const fetchFavoriteVideos = async () => {
-      if (!userId) return; // Wait until the user is logged in
+      if (!userId) return;
 
       try {
         const userListsRef = collection(db, 'users', userId, 'lists');
         const listsSnapshot = await getDocs(userListsRef);
-        
         const allFavoriteVideos = [];
 
         for (const listDoc of listsSnapshot.docs) {
@@ -37,28 +36,38 @@ function Favorites() {
           const videosRef = collection(db, 'users', userId, 'lists', listId, 'videos');
           const videosSnapshot = await getDocs(videosRef);
 
-          // Check each video for the "liked" field
           videosSnapshot.forEach((videoDoc) => {
             const videoData = videoDoc.data();
             if (videoData.liked) {
               allFavoriteVideos.push({
-                videoId: videoDoc.id,
+                id: videoDoc.id,
+                listId,
                 ...videoData,
               });
             }
           });
         }
 
-        setFavoriteVideos(allFavoriteVideos); // Set state with all liked videos
-        setLoading(false);
+        setFavoriteVideos(allFavoriteVideos);
       } catch (error) {
         console.error("Error fetching favorite videos: ", error);
+      } finally {
         setLoading(false);
       }
     };
 
     fetchFavoriteVideos();
-  }, [userId]); // Re-run the fetch when userId changes
+  }, [userId]);
+
+  const toggleFavorite = async (videoId, listId, isLiked) => {
+    try {
+      const videoRef = doc(db, 'users', userId, 'lists', listId, 'videos', videoId);
+      await updateDoc(videoRef, { liked: !isLiked });
+      setFavoriteVideos(favoriteVideos.map(video => video.id === videoId ? { ...video, liked: !isLiked } : video));
+    } catch (error) {
+      console.error("Error updating favorite status: ", error);
+    }
+  };
 
   const convertToEmbedUrl = (url) => {
     try {
@@ -111,6 +120,9 @@ function Favorites() {
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
                 ></iframe>
+                <button onClick={() => toggleFavorite(video.id, video.listId, video.liked)}>
+                  {video.liked ? '★' : '☆'}
+                </button>
               </div>
             ))
           ) : (

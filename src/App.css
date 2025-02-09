@@ -282,6 +282,30 @@ h2 {
   background-color: #e60000;
 }
 
+/* Default state */
+.favorite-btn {
+  background: none;
+  border: none;
+  color: #888; /* Neutral gray */
+  font-size: 1.5em;
+  cursor: pointer;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+/* Hover effect */
+.favorite-btn:hover {
+  color: #ff6666; /* Brighter red */
+}
+
+/* Active (favorited) state */
+.favorite-btn.favorited {
+  color: #e1ff00; /* Stronger red */
+  text-shadow: 0 0 8px rgba(221, 255, 0, 0.8); /* Glow effect */
+}
+
 
 /* HomePage Layout */
 .HomePage {

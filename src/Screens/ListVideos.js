@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { auth, db } from '../firebaseConfig';
-import { getDocs, collection, addDoc, deleteDoc, doc } from 'firebase/firestore';
+import { getDocs, collection, addDoc, deleteDoc, doc, updateDoc } from 'firebase/firestore';
 import { onAuthStateChanged } from 'firebase/auth';
 import '../App.css';
 
@@ -99,6 +99,19 @@ function ListVideos() {
     }
   };
 
+  const toggleFavorite = async (videoId, isLiked) => {
+    try {
+      const videoRef = doc(db, 'users', userId, 'lists', listId, 'videos', videoId);
+      await updateDoc(videoRef, { liked: !isLiked });
+  
+      // Update local state
+      setVideos(videos.map(video => video.id === videoId ? { ...video, liked: !isLiked } : video));
+    } catch (error) {
+      console.error("Error updating favorite status: ", error);
+    }
+  };
+  
+
   const handleDeleteVideo = async (videoId) => {
     try {
       await deleteDoc(doc(db, 'users', userId, 'lists', listId, 'videos', videoId));
@@ -151,6 +164,9 @@ function ListVideos() {
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
                 ></iframe>
+                <button onClick={() => toggleFavorite(video.id, video.liked)}>
+                  {video.liked ? '★' : '☆'}
+                </button>
                 {deleteMode && (
                   <button onClick={() => handleDeleteVideo(video.id)}>X</button>
                 )}
