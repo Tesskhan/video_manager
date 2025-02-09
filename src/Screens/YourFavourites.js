@@ -60,19 +60,57 @@ function Favorites() {
     fetchFavoriteVideos();
   }, [userId]); // Re-run the fetch when userId changes
 
+  const convertToEmbedUrl = (url) => {
+    try {
+      let videoId = '';
+  
+      // Handle YouTube watch URLs
+      if (url.includes('youtube.com/watch')) {
+        const urlParams = new URLSearchParams(new URL(url).search);
+        videoId = urlParams.get('v'); // Extract the video ID from ?v= parameter
+      }
+      // Handle youtu.be shortened URLs
+      else if (url.includes('youtu.be')) {
+        videoId = url.split('/').pop();
+      }
+      // Handle already embedded URLs
+      else if (url.includes('youtube.com/embed/')) {
+        return url; // Already an embed URL
+      }
+  
+      // If a valid videoId is found, return embed URL
+      if (videoId) {
+        return `https://www.youtube.com/embed/${videoId}`;
+      }
+  
+      // If URL format is invalid, return original URL
+      return url;
+    } catch (error) {
+      console.error("Error converting URL:", error);
+      return url; // Fallback to original URL
+    }
+  };
+
   return (
     <div className="YourFavourites">
       <h2>Your Favorites</h2>
       {loading ? (
         <p>Loading...</p>
       ) : (
-        <div className="list-container">
+        <div className="video-container">
           {favoriteVideos.length > 0 ? (
             favoriteVideos.map((video) => (
               <div className="card" key={video.videoId}>
                 <h3>{video.title}</h3>
-                <p>{video.description}</p>
-                {/* Add other video fields here if needed */}
+                <iframe
+                  src={convertToEmbedUrl(video.url)}
+                  title={video.title}
+                  width="560"
+                  height="315"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                ></iframe>
               </div>
             ))
           ) : (

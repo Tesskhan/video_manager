@@ -307,7 +307,7 @@ h2 {
   border-radius: 12px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   color: #333; /* Dark text */
-  margin: 0 auto; /* Center the form horizontally */
+  margin: 50px; /* Center the form horizontally */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -405,6 +405,7 @@ h2 {
 }
 
 .list-container, .fav-list {
+  align-items: center;
   display: flex;
   flex-direction: column; /* Ensure lists are vertical */
   justify-content: center; /* Center the cards */

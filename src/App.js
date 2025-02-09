@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, NavLink, useNavigate } from 'react-router-dom'; // Updated import
+import { BrowserRouter as Router, Routes, Route, NavLink, useNavigate, Navigate } from 'react-router-dom'; // Updated import
 import './App.css';
 import logo from './logo.svg';
 import YourLists from './Screens/YourLists';
@@ -122,6 +122,10 @@ function Profile({ setIsAuthenticated }) {
   );
 }
 
+function PrivateRoute({ element: Component, isAuthenticated, ...rest }) {
+  return isAuthenticated ? <Component {...rest} /> : <Navigate to="/" />;
+}
+
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
@@ -182,10 +186,10 @@ function App() {
         <main>
           <Routes>
             <Route path="/" element={<HomePage isAuthenticated={isAuthenticated} setIsAuthenticated={setIsAuthenticated} />} />
-            <Route path="/favourites" element={<YourFavourites />} />
-            <Route path="/lists" element={<YourLists />} />
-            <Route path="/list-videos/:listId" element={<ListVideos />} />
-            <Route path="/profile" element={<Profile setIsAuthenticated={setIsAuthenticated} />} />
+            <Route path="/favourites" element={<PrivateRoute element={YourFavourites} isAuthenticated={isAuthenticated} />} />
+            <Route path="/lists" element={<PrivateRoute element={YourLists} isAuthenticated={isAuthenticated} />} />
+            <Route path="/list-videos/:listId" element={<PrivateRoute element={ListVideos} isAuthenticated={isAuthenticated} />} />
+            <Route path="/profile" element={<PrivateRoute element={Profile} isAuthenticated={isAuthenticated} setIsAuthenticated={setIsAuthenticated} />} />
           </Routes>
         </main>
       </div>

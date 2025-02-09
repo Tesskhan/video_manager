@@ -104,8 +104,8 @@ function YourLists() {
             onChange={(e) => setNewListDescription(e.target.value)}
             className="input"
           />
-          <button onClick={handleCreateList} className="create-list-btn">Create List</button>
         </div>
+        <button onClick={handleCreateList} className="create-list-btn">Create List</button>
         <button onClick={() => setDeleteMode(!deleteMode)} className="toggle-delete-mode-btn">
           {deleteMode ? 'Cancel' : 'Remove List'}
         </button>
